@@ -11,7 +11,7 @@ main() {
 		
 	printf("******Programa para calcular o IMC****** \n\n\n");
 	
-	printf("Digite a altura em centimetros: ");
+	printf("Digite a altura em Metros: ");
 	scanf("%f", &altura);
 	
 	printf("\nDigite o peso em Kilogramas: ");
