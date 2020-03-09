@@ -1,4 +1,9 @@
 #include <stdio.h>
+#include <conio.h>
+#include<stdlib.h>
+
+	
+int escolha;
 
 
 void cadastrarCliente(){
@@ -72,11 +77,26 @@ void menuConfirma(){
 	printf("|********************************************************************|\n");
 }
 main() {
-	cadastrarCliente();
-	menuConfirma();
+	escolha = 0;
 	
-	//fazerLogin();
-	//menuConfirma();
+	
+	printf("Escolha o menu: 1 - Cadastrar Cliente or 2 - Fazer login \n");
+	scanf("%I", &escolha);
+	
+	if (escolha = 1){
+		system("cls");
+		cadastrarCliente();
+		menuConfirma();	
+		getchar();
+	}
+	else if (escolha = 2){
+		system("cls");
+		fazerLogin();
+		menuConfirma();
+		getchar();
+	}
+	
+
 	
 	
 	getchar();
