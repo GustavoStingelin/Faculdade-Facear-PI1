@@ -55,13 +55,13 @@ void cadastrarCliente(){
 	scanf("%s", &tSenha);
 
 	gotoxy(28, 10);
-	scanf("%s", &tIdade);
+	scanf("%i", &tIdade);
 	
 	gotoxy(28, 11);
-	scanf("%s", &tCPF);
+	scanf("%i", &tCPF);
 	
 	gotoxy(28, 12);
-	scanf("%s", &tTelefone);
+	scanf("%i", &tTelefone);
 	
 	
 	menuConfirma();
