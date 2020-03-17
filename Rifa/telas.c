@@ -1,7 +1,8 @@
 #include <windows.h>
 
 char tNome[50], tUsuario[50], tSenha[50];
-int tIdade, tCPF, tTelefone;
+
+int tIdade, tCPF, tTelefone, escolha; 
 
 
 void gotoxy(int x, int y) {
@@ -9,28 +10,17 @@ void gotoxy(int x, int y) {
 	coord.X = x;
 	coord.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-
 }
 
 
-void menuConfirma(){
-	printf("|                                                                    |\n");
-	printf("| 1 => Confirmar, 2 => Cancelar                                      |\n");
-	printf("| Escolha uma das opcoes acima:                                      |\n");
-	printf("|                                                                    |\n");
-	printf("|--------------------------------------------------------------------|\n");
-}
 
+//30 caracteres por linha (max 80x24, padrao 70x20)
+//printf("|                                                                    |\n");
 
 
 void cadastrarCliente(){
 	printf("|----------------------------|\n| Cadastrar Cliente          |\n|--------------------------------------------------------------------|\n");
-	//30 caracteres por linha (max 80x24, padrao 70x20)
-	//printf("|                                                                    |\n");
 	printf("|                                                                    |\n");
-		//----------------------------------------------------------------------------------------------------------------------------------
-	
-	
 	printf("| DADOS DO CLIENTE                                                   |\n");
 	printf("|____________________________________________________________________|\n");
 	printf("|                                                                    |\n");
@@ -40,8 +30,6 @@ void cadastrarCliente(){
 	printf("|           Digite a idade:                                          |\n");
 	printf("|             Digite o CPF:                                          |\n");
 	printf("|        Digite o telefone:                                          |\n");
-	
-	//----------------------------------------------------------------------------------------------------------------------------------
 	printf("|                                                                    |\n");
 	printf("|--------------------------------------------------------------------|\n");
 	
@@ -64,27 +52,32 @@ void cadastrarCliente(){
 	scanf("%i", &tTelefone);
 	
 	
-	menuConfirma();
+	printf("|                                                                    |\n");
+	printf("| 1 => Confirmar, 2 => Cancelar                                      |\n");
+	printf("| Escolha uma das opcoes acima:                                      |\n");
+	printf("|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
+
 	gotoxy(32, 15);
 }
 
+
+
+
+
 void fazerLogin(){
 	printf("|----------------------------|\n| Fazer Login                |\n|------------------------------------------**************************|\n");
-	//30 caracteres por linha (max 80x24, padrao 70x20)
-	//printf("|                                                                    |\n");
 	printf("|                                                                    |\n");
-		//**********************************************************************************************************************************
-	
-	
-	
-	
 	printf("| Digite o nome de usuario:                                          |\n");
 	printf("|           Digite a senha:                                          |\n");
-	
-	
-	//**********************************************************************************************************************************
 	printf("|                                                                    |\n");
 	printf("|--------------------------------------------------------------------|\n");
+	printf("|                                                                    |\n");
+	printf("| 1 => Confirmar, 2 => Cancelar                                      |\n");
+	printf("| Escolha uma das opcoes acima:                                      |\n");
+	printf("|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
+
 }
 
 

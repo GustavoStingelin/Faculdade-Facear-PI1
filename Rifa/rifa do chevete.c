@@ -2,37 +2,40 @@
 #include <conio.h>
 #include <stdlib.h>
 #include "telas.c"
+#include <ctype.h>
 	
-int escolha;
-
-
 
 int main(VOID) {
 
-	inicio:
+	//inicio:
 
 	escolha = 0;
 	
 	
 	printf("Escolha o menu: 1 - Cadastrar Cliente or 2 - Fazer login \n");
-	scanf("%i", &escolha);
+
+	scanf("%s", &escolha);
 	
-	if (escolha == 1){
-		system("cls");
-		cadastrarCliente();
-		getchar();
+	if (isdigit(escolha)){
+
+		if (escolha == 1){
+			system("cls");
+			cadastrarCliente();
+			getchar();
+		}
+
+		else if (escolha == 2){
+			system("cls");
+			fazerLogin();
+			getchar();
+		}
+
 	}
-	else if (escolha == 2){
-		system("cls");
-		fazerLogin();
-		getchar();
-	}
-	
 
 
-
-	getch();
 	system("cls");
-	goto inicio;
+	//goto inicio;
+	main();
+
 
 }
