@@ -5,15 +5,12 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-
 void gotoxy(int x, int y) {
 	COORD coord;
 	coord.X = x;
 	coord.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
-
-
 
 //30 caracteres por linha (max 80x24, padrao 70x20)
 //printf("|                                                                    |\n");
@@ -36,22 +33,22 @@ void cadastrarCliente(){
 	printf("|--------------------------------------------------------------------|\n");
 	
 	gotoxy(28, 7);
-	scanf("%s", &tNome);
+	gets(tNome);
 	
 	gotoxy(28, 8);
-	scanf("%s", &tUsuario);
+	gets(tUsuario);
 	
 	gotoxy(28, 9);
-	scanf("%s", &tSenha);
+	gets(tSenha);
 
 	gotoxy(28, 10);
-	scanf("%i", &tIdade);
+	gets(tIdade);
 	
 	gotoxy(28, 11);
-	scanf("%i", &tCPF);
+	gets(tCPF);
 	
 	gotoxy(28, 12);
-	scanf("%i", &tTelefone);
+	gets(tTelefone);
 	
 	
 	printf("|                                                                    |\n");
