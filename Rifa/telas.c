@@ -1,9 +1,4 @@
 #include "variaveis.c"
-#include <windows.h>
-#include <stdio.h>
-#include <conio.h>
-#include <stdlib.h>
-#include <ctype.h>
 
 void gotoxy(int x, int y) {
 	COORD coord;
@@ -15,6 +10,53 @@ void gotoxy(int x, int y) {
 //30 caracteres por linha (max 80x24, padrao 70x20)
 //printf("|                                                                    |\n");
 
+
+void msgOpcaoInvalida(){
+    system("cls");
+	printf("|--------------------------------------------------------------------|\n");
+	printf("|                                                                    |\n");
+	printf("| OPCAO INVALIDA, TENTE NOVAMENTE!                                   |\n");
+	printf("|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
+	sleep(2);
+	system("cls");
+}
+
+void msgSucesso(){
+    system("cls");
+	printf("|--------------------------------------------------------------------|\n");
+	printf("|                                                                    |\n");
+	printf("| OPERACAO REALIZADA COM SUCESSO!                                    |\n");
+	printf("|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
+	sleep(2);
+	system("cls");
+}
+
+void msgCancelado(){
+    system("cls");
+	printf("|--------------------------------------------------------------------|\n");
+	printf("|                                                                    |\n");
+	printf("| OPERACAO CANCELADA!                                                |\n");
+	printf("|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
+	sleep(2);
+	system("cls");
+}
+
+void telaInicial (){
+	system("cls");
+	printf("|----------------------------|\n| Sistema de Rifa            |\n|--------------------------------------------------------------------|\n");
+	printf("|                                                                    |\n");
+	printf("| Inicio                                                             |\n");
+	printf("|____________________________________________________________________|\n");
+	printf("|                                                                    |\n");
+	printf("| Escolha:                                                           |\n");
+	printf("| 1 => Cadastrar, 2 => Logar                                         |\n");
+	printf("|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
+	gotoxy(10, 7);
+}
 
 void cadastrarCliente(){
 	system("cls");
@@ -33,48 +75,53 @@ void cadastrarCliente(){
 	printf("|--------------------------------------------------------------------|\n");
 	
 	gotoxy(28, 7);
-	gets(tNome);
-	
-	gotoxy(28, 8);
-	gets(tUsuario);
+	scanf(" %[^\n]s", &tNome);
+
+	gotoxy(28, 8);	
+	scanf(" %[^\n]s", &tUsuario);
 	
 	gotoxy(28, 9);
-	gets(tSenha);
+	scanf(" %[^\n]s", &tSenha);
 
 	gotoxy(28, 10);
-	gets(tIdade);
+	scanf(" %[^\n]s", &tIdade);
 	
 	gotoxy(28, 11);
-	gets(tCPF);
+	scanf(" %[^\n]s", &tCPF);
 	
 	gotoxy(28, 12);
-	gets(tTelefone);
-	
-	
+	scanf(" %[^\n]s", &tTelefone);
+		
 	printf("|                                                                    |\n");
 	printf("| Escolha:                                                           |\n");
 	printf("| 1 => Confirmar, 2 => Cancelar                                      |\n");
 	printf("|                                                                    |\n");
 	printf("|--------------------------------------------------------------------|\n");
+	gotoxy(10, 14);
+	confirmaCadastro:
+		escolha = getche();
+	if (escolha == 49){ // == 1 => Confirmar
+		msgSucesso();
+		main();
+	}
 
-	gotoxy(32, 15);
+	else if (escolha == 50){ // == 2 => Cancelar 
+		msgCancelado();
+		main();
+	}
+
+	else{
+		system("cls");
+		printf("|--------------------------------------------------------------------|\n");
+		printf("|                                                                    |\n");
+		printf("| Escolha:                                                           |\n");
+		printf("| 1 => Confirmar, 2 => Cancelar                                      |\n");
+		printf("|                                                                    |\n");
+		printf("|--------------------------------------------------------------------|\n");
+		gotoxy(10, 2);
+		goto confirmaCadastro;
+	}
 }
-
-void telaInicial (){
-	system("cls");
-	printf("|----------------------------|\n| Sistema de Rifa            |\n|--------------------------------------------------------------------|\n");
-	printf("|                                                                    |\n");
-	printf("| Inicio                                                             |\n");
-	printf("|____________________________________________________________________|\n");
-	printf("|                                                                    |\n");
-	printf("| Escolha:                                                           |\n");
-	printf("| 1 => Cadastrar, 2 => Logar                                         |\n");
-	printf("|                                                                    |\n");
-	printf("|--------------------------------------------------------------------|\n");
-
-}
-
-
 
 void fazerLogin(){
     system("cls");
@@ -87,6 +134,64 @@ void fazerLogin(){
 	printf("|           Digite a senha:                                          |\n");
 	printf("|                                                                    |\n");
 	printf("|--------------------------------------------------------------------|\n");
+
+	gotoxy(28, 7);
+	scanf(" %[^\n]s", &loginUsuario);
+
+	gotoxy(28, 8);
+	scanf(" %[^\n]s", &loginSenha);
+	rLogin = 0;
+
+	if( strcmp(loginUsuario, tUsuario) == 0 && strcmp(loginSenha, tSenha) == 0){
+		rLogin = 1;
+		return rLogin;
+	}
+	else{
+		rLogin = 0;
+	system("cls");
+	printf("|----------------------------|\n| Fazer Login                |\n|--------------------------------------------------------------------|\n");
+	printf("|                                                                    |\n");
+	printf("| LOGIN                                                              |\n");
+	printf("|____________________________________________________________________|\n");
+	printf("|                                                                    |\n");
+	printf("| USUARIO OU SENHA INCORRETO, TENTE NOVAMENTE!                       |\n");
+	printf("|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
+	sleep(3);
+	main();
+	}
+}
+
+void lobby(){
+	system("cls");
+	printf("|----------------------------|\n| Sistema de Rifa            |\n|--------------------------------------------------------------------|\n");
+	printf("|                                                                    |\n");
+	printf("| Bem vindo                                                          |\n");
+	printf("|____________________________________________________________________|\n");
+	printf("|                                                                    |\n");
+	printf("| Escolha:                                                           |\n");
+	printf("| 1 => Comprar Rifa, 2 => Cadastrar Rifa, 3 => Sortear Rifa          |\n");
+	printf("|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
+
+	gotoxy(12, 4);
+	puts(loginUsuario);
+	printf("!");
+	gotoxy(10, 7);
+	rLobby = 0;
+
+	escolha = getche();
+	if( escolha > 48 && escolha < 52){
+		rLobby = escolha;
+		return rLobby;
+	}
+	else{
+		msgOpcaoInvalida();
+		rLobby = 0;
+		return rLobby;
+	}
+
+
 
 }
 
