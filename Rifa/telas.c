@@ -1,8 +1,9 @@
+#include "variaveis.c"
 #include <windows.h>
-
-char tNome[50], tUsuario[50], tSenha[50];
-
-int tIdade, tCPF, tTelefone, escolha; 
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 
 void gotoxy(int x, int y) {
@@ -19,6 +20,7 @@ void gotoxy(int x, int y) {
 
 
 void cadastrarCliente(){
+	system("cls");
 	printf("|----------------------------|\n| Cadastrar Cliente          |\n|--------------------------------------------------------------------|\n");
 	printf("|                                                                    |\n");
 	printf("| DADOS DO CLIENTE                                                   |\n");
@@ -53,28 +55,39 @@ void cadastrarCliente(){
 	
 	
 	printf("|                                                                    |\n");
+	printf("| Escolha:                                                           |\n");
 	printf("| 1 => Confirmar, 2 => Cancelar                                      |\n");
-	printf("| Escolha uma das opcoes acima:                                      |\n");
 	printf("|                                                                    |\n");
 	printf("|--------------------------------------------------------------------|\n");
 
 	gotoxy(32, 15);
 }
 
+void telaInicial (){
+	system("cls");
+	printf("|----------------------------|\n| Sistema de Rifa            |\n|--------------------------------------------------------------------|\n");
+	printf("|                                                                    |\n");
+	printf("| Inicio                                                             |\n");
+	printf("|____________________________________________________________________|\n");
+	printf("|                                                                    |\n");
+	printf("| Escolha:                                                           |\n");
+	printf("| 1 => Cadastrar, 2 => Logar                                         |\n");
+	printf("|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
 
+}
 
 
 
 void fazerLogin(){
-	printf("|----------------------------|\n| Fazer Login                |\n|------------------------------------------**************************|\n");
+    system("cls");
+	printf("|----------------------------|\n| Fazer Login                |\n|--------------------------------------------------------------------|\n");
+	printf("|                                                                    |\n");
+	printf("| LOGIN                                                              |\n");
+	printf("|____________________________________________________________________|\n");
 	printf("|                                                                    |\n");
 	printf("| Digite o nome de usuario:                                          |\n");
 	printf("|           Digite a senha:                                          |\n");
-	printf("|                                                                    |\n");
-	printf("|--------------------------------------------------------------------|\n");
-	printf("|                                                                    |\n");
-	printf("| 1 => Confirmar, 2 => Cancelar                                      |\n");
-	printf("| Escolha uma das opcoes acima:                                      |\n");
 	printf("|                                                                    |\n");
 	printf("|--------------------------------------------------------------------|\n");
 
