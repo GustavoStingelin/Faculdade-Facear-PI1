@@ -7,10 +7,11 @@
 
 //navegacao
 int escolha;
+int rLogin, rLobby;
 
 //variaveis temporarias
 char tNome[100], tUsuario[100], tSenha[100], tIdade[100], tCPF[100], tTelefone[100];
 char loginUsuario[100], loginSenha[100];
-int rLogin, rLobby;
+char tNumrosRifa, tTituloRifa, tValorRifa;
 
 //int tIdade, tCPF, tTelefone;

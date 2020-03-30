@@ -52,7 +52,7 @@ void telaInicial (){
 	printf("|____________________________________________________________________|\n");
 	printf("|                                                                    |\n");
 	printf("| Escolha:                                                           |\n");
-	printf("| 1 => Cadastrar, 2 => Logar                                         |\n");
+	printf("| 1 => Cadastrar-se, 2 => Logar                                      |\n");
 	printf("|                                                                    |\n");
 	printf("|--------------------------------------------------------------------|\n");
 	gotoxy(10, 7);
@@ -195,4 +195,30 @@ void lobby(){
 
 }
 
+void cadastrarRifa(){
+	system("cls");
+	printf("|----------------------------|\n| Cadastrar Rifa             |\n|--------------------------------------------------------------------|\n");
+	printf("|                                                                    |\n");
+	printf("| DADOS DA RIFA                                                      |\n");
+	printf("|____________________________________________________________________|\n");
+	printf("|                                                                    |\n");
+	printf("|        Digite o Titulo da Rifa:                                    |\n");
+	printf("| Digite a Quantidade de Numeros:                                    |\n");
+	printf("|         Digite o Valor da Rifa:                                    |\n");
+	printf("|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
+	
+	gotoxy(34, 7);
+	scanf(" %[^\n]s", &tTituloRifa);
+
+	gotoxy(34, 8);
+	scanf(" %[^\n]s", &tNumrosRifa);
+
+	gotoxy(34, 9);
+	scanf(" %[^\n]s", &tValorRifa);
+
+	msgSucesso();
+
+	menuLobby();
+}	
 

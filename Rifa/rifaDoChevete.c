@@ -1,7 +1,25 @@
 #include "variaveis.c"
 #include "telas.c"
 	
-int main() {
+void menuLobby(){
+	lobby();
+	if(rLobby == 49){ //comprar rifa
+
+	}
+	else if(rLobby == 50){ //cadastrar rifa
+		cadastrarRifa();
+	}
+	else if(rLobby == 51){ //sortear rifa
+				
+	}
+	else if(rLobby == 0){ //inválido
+		menuLobby();
+	}
+}//lobby	
+
+
+
+int main(){
 
 	telaInicial();
 	escolha = getche();
@@ -13,20 +31,8 @@ int main() {
 	else if (escolha == 50){ // == 2
 		fazerLogin();
 		if(rLogin == 1){ //login
-			lobby: //lobby
-			lobby();
-			if(rLobby == 1){ //comprar rifa
-
-			}
-			else if(rLobby == 2){ //cadastrar rifa
-				
-			}
-			else if(rLobby == 3){ //sortear rifa
-				
-			}
-			else if(rLobby == 0){ //inválido
-				goto lobby;
-			}//lobby
+			menuLobby();
+			
 		}//login
 	}
 	else{
