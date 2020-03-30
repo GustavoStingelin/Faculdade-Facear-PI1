@@ -4,7 +4,7 @@
 void menuLobby(){
 	lobby();
 	if(rLobby == 49){ //comprar rifa
-
+		comprarRifa();
 	}
 	else if(rLobby == 50){ //cadastrar rifa
 		cadastrarRifa();
@@ -27,6 +27,7 @@ int main(){
 	if (escolha == 49){ // == 1
 		cadastrarCliente();
 	}
+	
 
 	else if (escolha == 50){ // == 2
 		fazerLogin();
