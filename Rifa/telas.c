@@ -212,7 +212,7 @@ void cadastrarRifa(){
 	scanf(" %[^\n]s", &tTituloRifa);
 
 	gotoxy(34, 8);
-	scanf(" %[^\n]s", &tNumrosRifa);
+	scanf(" %[^\n]s", &tNumerosRifa);
 
 	gotoxy(34, 9);
 	scanf(" %[^\n]s", &tValorRifa);
@@ -222,3 +222,73 @@ void cadastrarRifa(){
 	menuLobby();
 }	
 
+void comprarRifa(){
+	system("cls");
+	printf("|----------------------------|\n| Comprar Rifa               |\n|--------------------------------------------------------------------|\n");
+	printf("|                                                                    |\n");
+	printf("| RIFAS DISPONIVEIS                                                  |\n");
+	printf("|____________________________________________________________________|\n");
+	printf("|                                                                    |\n");
+	printf("|           Rifa:                                                    |\n");
+	printf("|  Valor da Rifa:                                                    |\n");
+	printf("|                                                                    |\n");
+	printf("|                                                                    |\n");
+	printf("|                                                                    |\n");
+	printf("|                                                                    |\n");
+	printf("|                                                                    |\n");
+	printf("|                                                                    |\n");
+	printf("|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
+	
+	gotoxy(17, 7);
+	printf("01 - ");
+	puts(tTituloRifa);
+
+	gotoxy(17, 8);
+	puts(tValorRifa);
+
+	printf("\n|     ");
+
+
+
+	int nRifa = atoi(tNumerosRifa);
+    int n;
+	for(n = 1; n <= nRifa; n++){
+		printf(" ");
+		if(n <= 9){
+			printf("0");
+		}
+		printf("%i", n);
+		
+		if(n % 15 == 0){
+			printf("\n|     ");
+		}
+	}
+
+
+	getch();
+	menuLobby();
+}	
+
+void sortearRifa(){
+    system("cls");
+    printf("|----------------------------|\n| Sortear Rifa               |\n|--------------------------------------------------------------------|\n");
+    printf("|                                                                    |\n");
+    printf("| SORTEAR NUMERO                                                     |\n");
+    printf("|____________________________________________________________________|\n");
+    printf("|                                                                    |\n");
+    printf("|   Digite 1 para sortear o vencedor:                                |\n");
+    printf("|   Digite 2 para voltar ao menu:                                    |\n");
+    printf("|                                                                    |\n");
+    printf("|                                                                    |\n");
+    printf("|                                                                    |\n");
+    printf("|                                                                    |\n");
+    printf("|                                                                    |\n");
+    printf("|                                                                    |\n");
+    printf("|                                                                    |\n");
+    printf("|--------------------------------------------------------------------|\n");
+
+
+	getch();
+	menuLobby();
+}

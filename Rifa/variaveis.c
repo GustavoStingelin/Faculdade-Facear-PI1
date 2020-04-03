@@ -12,6 +12,6 @@ int rLogin, rLobby;
 //variaveis temporarias
 char tNome[100], tUsuario[100], tSenha[100], tIdade[100], tCPF[100], tTelefone[100];
 char loginUsuario[100], loginSenha[100];
-char tNumrosRifa, tTituloRifa, tValorRifa;
+char tNumerosRifa[100], tTituloRifa[100], tValorRifa[100];
 
 //int tIdade, tCPF, tTelefone;
