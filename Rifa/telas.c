@@ -238,7 +238,6 @@ void comprarRifa(){
 	printf("|                                                                    |\n");
 	printf("|                                                                    |\n");
 	printf("|                                                                    |\n");
-	printf("|--------------------------------------------------------------------|\n");
 	
 	gotoxy(18, 7);
 	printf("01 - ");
@@ -253,17 +252,20 @@ void comprarRifa(){
 
 	int nRifa = atoi(tNumerosRifa);
     int n;
+	int colunasRifa = 15;
 	for(n = 1; n <= nRifa; n++){
-		printf(" ");
+
+		if( n % colunasRifa == 1 && n != (nRifa + 1)){
+			printf("\n|     ");
+		}
 		if(n <= 9){
 			printf("0");
 		}
-		printf("%i", n);
-		
-		if(n % 15 == 0){
-			printf("\n|     ");
-		}
+		printf("%i ", n);
 	}
+
+	printf("\n|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
 
 
 	getch();
@@ -277,8 +279,7 @@ void sortearRifa(){
     printf("| SORTEAR NUMERO                                                     |\n");
     printf("|____________________________________________________________________|\n");
     printf("|                                                                    |\n");
-    printf("|   Digite 1 para sortear o vencedor:                                |\n");
-    printf("|   Digite 2 para voltar ao menu:                                    |\n");
+    printf("|   Escolha a Rifa:                                                  |\n");
     printf("|                                                                    |\n");
     printf("|                                                                    |\n");
     printf("|                                                                    |\n");
@@ -286,8 +287,24 @@ void sortearRifa(){
     printf("|                                                                    |\n");
     printf("|                                                                    |\n");
     printf("|                                                                    |\n");
+    printf("|                                                                    |\n");
+    printf("|                                                                    |\n");
+    printf("|                                                                    |\n");
+    printf("|                                                                    |\n");
+	printf("|                                                                    |\n");
     printf("|--------------------------------------------------------------------|\n");
 
+
+	gotoxy(10, 10);
+	printf("01 - ");
+	puts(tTituloRifa);
+
+	gotoxy(18, 11);
+	puts(tValorRifa);
+
+
+	gotoxy(20, 7);
+	scanf(" %[^\n]s", &x);
 
 	getch();
 	menuLobby();
