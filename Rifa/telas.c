@@ -240,11 +240,11 @@ void comprarRifa(){
 	printf("|                                                                    |\n");
 	printf("|--------------------------------------------------------------------|\n");
 	
-	gotoxy(17, 7);
+	gotoxy(18, 7);
 	printf("01 - ");
 	puts(tTituloRifa);
 
-	gotoxy(17, 8);
+	gotoxy(18, 8);
 	puts(tValorRifa);
 
 	printf("\n|     ");
