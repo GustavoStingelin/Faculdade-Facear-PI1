@@ -1,6 +1,6 @@
 #include "variaveis.c"
 
-void gotoxy(int x, int y) {
+ void gotoxy(int x, int y) {
 	COORD coord;
 	coord.X = x;
 	coord.Y = y;
@@ -53,9 +53,37 @@ void telaInicial (){
 	printf("|                                                                    |\n");
 	printf("| Escolha:                                                           |\n");
 	printf("| 1 => Cadastrar-se, 2 => Logar                                      |\n");
+	printf("| 0 => Fechar o Sistema                                              |\n");	
 	printf("|                                                                    |\n");
 	printf("|--------------------------------------------------------------------|\n");
 	gotoxy(10, 7);
+}
+
+void fecharSistema(){
+    system("cls");
+	printf("|----------------------------|\n| FECHAR O PROGRAMA          |\n|--------------------------------------------------------------------|\n");
+	printf("|                                                                    |\n");
+	printf("| Deseja mesmo encerrar o sistema?                                   |\n");
+	printf("|____________________________________________________________________|\n");
+	printf("|                                                                    |\n");
+	printf("|            Digite <S> para fechar.                                 |\n");
+	printf("|            Escolha:                                                |\n"); //8	x 21
+	printf("|                                                                    |\n");
+	printf("|--------------------------------------------------------------------|\n");
+	gotoxy(21, 8);
+	escolha = getche();
+
+	if( escolha == 83 || escolha == 115){
+	system("cls");
+	printf("Saindo...\n");
+	sleep(3);
+	exit(0);
+	}
+	else{
+		msgOpcaoInvalida();
+		main();
+	}
+
 }
 
 void cadastrarCliente(){
@@ -171,7 +199,7 @@ void lobby(){
 	printf("|                                                                    |\n");
 	printf("| Escolha:                                                           |\n");
 	printf("| 1 => Comprar Rifa, 2 => Cadastrar Rifa, 3 => Sortear Rifa          |\n");
-	printf("|                                                                    |\n");
+	printf("| 0 => Logoff                                                        |\n");
 	printf("|--------------------------------------------------------------------|\n");
 
 	gotoxy(12, 4);
@@ -181,7 +209,7 @@ void lobby(){
 	rLobby = 0;
 
 	escolha = getche();
-	if( escolha > 48 && escolha < 52){
+	if( escolha >= 48 && escolha <= 51){
 		rLobby = escolha;
 		return rLobby;
 	}
