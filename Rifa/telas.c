@@ -1,4 +1,4 @@
-#include "variaveis.c"
+
 
  void gotoxy(int x, int y) {
 	COORD coord;
@@ -104,8 +104,11 @@ void cadastrarCliente(){
 	
 	gotoxy(28, 7);
 	scanf(" %[^\n]s", &tNome);
+	//fflush(stdin);
+	//fgets(tNome, 20, stdin);
 
-	gotoxy(28, 8);	
+	gotoxy(28, 8);
+	fflush(stdin);	
 	scanf(" %[^\n]s", &tUsuario);
 	
 	gotoxy(28, 9);
@@ -127,8 +130,29 @@ void cadastrarCliente(){
 	printf("|--------------------------------------------------------------------|\n");
 	gotoxy(10, 14);
 	confirmaCadastro:
-		escolha = getche();
+	escolha = getche();
 	if (escolha == 49){ // == 1 => Confirmar
+		int i;
+		i = ultimoUsuarioVetor + 1;
+		usuarios[i].idUsr = i + 1;
+		strcpy(usuarios[i].usuarioUsr, tUsuario);
+		strcpy(usuarios[i].senhaUsr, tSenha);
+		strcpy(usuarios[i].nomeUsr, tNome);
+		strcpy(usuarios[i].cpfUsr, tCPF);
+		strcpy(usuarios[i].telefoneUsr, tTelefone);
+		usuarios[i].idadeUsr = atoi(tIdade);
+
+		system("cls");
+		printf("%i\n", usuarios[i].idUsr);
+		puts(usuarios[i].usuarioUsr);
+		puts(usuarios[i].senhaUsr);
+		puts(usuarios[i].nomeUsr);
+		puts(usuarios[i].cpfUsr);
+		puts(usuarios[i].telefoneUsr);
+		printf("%i", usuarios[i].idadeUsr);
+		sleep(3);
+
+		ultimoUsuarioVetor = ultimoUsuarioVetor + 1;
 		msgSucesso();
 		main();
 	}
@@ -151,7 +175,7 @@ void cadastrarCliente(){
 	}
 }
 
-void fazerLogin(){
+int fazerLogin(){
     system("cls");
 	printf("|----------------------------|\n| Fazer Login                |\n|--------------------------------------------------------------------|\n");
 	printf("|                                                                    |\n");
@@ -169,24 +193,36 @@ void fazerLogin(){
 	gotoxy(28, 8);
 	scanf(" %[^\n]s", &loginSenha);
 	rLogin = 0;
+	
+	
+	for(int i=0; i <= ultimoUsuarioVetor; i++){
+		if(strcmp(usuarios[i].usuarioUsr, loginUsuario) == 0){
+			idUsuarioLogado = i + 1;
+			break;		
+		}
+		else{
+			idUsuarioLogado = -1;
+		}
+	}
+	if( idUsuarioLogado != -1 && strcmp(loginSenha, usuarios[idUsuarioLogado - 1].senhaUsr) == 0 ){
 
-	if( strcmp(loginUsuario, tUsuario) == 0 && strcmp(loginSenha, tSenha) == 0){
 		rLogin = 1;
 		return rLogin;
 	}
 	else{
 		rLogin = 0;
-	system("cls");
-	printf("|----------------------------|\n| Fazer Login                |\n|--------------------------------------------------------------------|\n");
-	printf("|                                                                    |\n");
-	printf("| LOGIN                                                              |\n");
-	printf("|____________________________________________________________________|\n");
-	printf("|                                                                    |\n");
-	printf("| USUARIO OU SENHA INCORRETO, TENTE NOVAMENTE!                       |\n");
-	printf("|                                                                    |\n");
-	printf("|--------------------------------------------------------------------|\n");
-	sleep(3);
-	main();
+		system("cls");
+		printf("|----------------------------|\n| Fazer Login                |\n|--------------------------------------------------------------------|\n");
+		printf("|                                                                    |\n");
+		printf("| LOGIN                                                              |\n");
+		printf("|____________________________________________________________________|\n");
+		printf("|                                                                    |\n");
+		printf("| USUARIO OU SENHA INCORRETO, TENTE NOVAMENTE!                       |\n");
+		printf("|                                                                    |\n");
+		printf("|--------------------------------------------------------------------|\n");
+
+		sleep(3);
+		main();
 	}
 }
 

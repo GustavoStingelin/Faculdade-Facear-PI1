@@ -1,5 +1,7 @@
 #include "variaveis.c"
 #include "telas.c"
+#include "metodos.c"
+#include "funcoesIniciais.c"
 	
 void menuLobby(){
 	lobby();
@@ -23,6 +25,8 @@ void menuLobby(){
 
 
 int main(){
+
+	executaFuncoesIniciais();
 
 	telaInicial();
 	escolha = getche();
