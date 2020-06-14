@@ -5,22 +5,43 @@
 #include <ctype.h>
 #include <string.h>
 
-#define maxNrRifa 100
-#define maxComprasRifa 5
+#define maxNrRifa 90
+#define maxComprasRifa maxNrRifa
 #define maxUsuarios 100 
 #define maxRifas 100
+#define maxPremiosRifa 5
 
-//system
-int execucoesMain = 0;
+int //system
+    idUsuarioLogado = 0
+    ,ultimoUsuarioVetor = -1
+    ,ultimoRifaVetor = -1
+    ,execucoesMain = 0
+;
 
-//navegacao
-int escolha;
-int rLogin = 0, rLobby = 0, idUsuarioLogado = 0, ultimoUsuarioVetor = -1;
+int //navegacao
+    escolha = 0
+    ,rLogin = 0
+    ,rLobby = 0
+    ,rifaEcolhida = 0
+;
 
-//variaveis temporarias
-char tNome[100], tUsuario[100], tSenha[100], tIdade[100], tCPF[100], tTelefone[100];
-char loginUsuario[100], loginSenha[100];
-char tNumerosRifa[100], tTituloRifa[100], tValorRifa[100];
+char //variaveis temporarias
+    tNome[100] 
+    ,tUsuario[100] 
+    ,tSenha[100]
+    ,tIdade[100]
+    ,tCPF[100]
+    ,tTelefone[100]
+    ,loginUsuario[100]
+    ,loginSenha[100]
+    ,tNumerosRifa[100]
+    ,tTituloRifa[100]
+    ,tValorRifa[100]
+    ,tQtdPremios[100]
+    ,tNomePremio[100]
+    ,tValorPremio[100]
+;
+
 char x[100];
 
 
@@ -36,14 +57,16 @@ char x[100];
     }usuarioStruct;
     usuarioStruct usuarios[maxUsuarios]; //Lista do tipo usuarioStruct
 
-    typedef struct{     //Tipo de struct usuarioStruct
+    typedef struct{     //Tipo de struct rifaStruct
         int idRifa;                  //ID único da rifa (indiceVetor + 1)
         int qtdNrRifa;               //Quantidade de numeros que a rifa possui
-        int valorNrRifa;             //Valor de cada numero da rifa
+        int qtdPremios;              //Quantidade  de premios que a rifa possui
+        double valorNrRifa;          //Valor de cada numero da rifa
         char nomeRifa[100];          //Nome da rifa
         int id_UsrDono;              //ID do usuário que criou a rifa
         int vendaRifa[maxNrRifa][3]; //numeroDaRifa[n][0], idUsr[n][1], statusNrRifa[n][2]
-
+        double valorPremio[maxPremiosRifa]; //Vetor com os valores dos premios
+        char nomePremio[maxPremiosRifa][100]; //Vetor com os nomes da Rifa
     }rifaStruct;
     rifaStruct rifas[maxRifas]; //Lista do tipo rifaStruct
 //STRUCT

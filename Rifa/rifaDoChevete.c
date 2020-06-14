@@ -22,13 +22,11 @@ void menuLobby(){
 	}
 }//lobby	
 
-
-
 int main(){
-
 	executaFuncoesIniciais();
 
 	telaInicial();
+	fflush(stdin);
 	escolha = getche();
 
 	if (escolha == 49){ // == 1
@@ -38,7 +36,7 @@ int main(){
 		fazerLogin();
 		if(rLogin == 1){ //caso senha correta => login
 			menuLobby();
-		}//fecha login
+		}//fecha login---
 	}
 	else if (escolha == 48){ // == 0
 		fecharSistema();
@@ -47,6 +45,6 @@ int main(){
 		msgOpcaoInvalida();
 		main();
 	}//tela inicial
-
+	
 main();
 }//main
