@@ -308,7 +308,7 @@ void lobby(){
 	system("cls");
 	printf(
 		"|----------------------------|\n"
-		"| Rifa Master - Lobby        |\n"
+		"|        Rifa Master         |\n"
 		"|--------------------------------------------------------------------|\n"
 		"|                                                                    |\n"
 		"| Bem vindo                                                          |\n"
@@ -390,7 +390,7 @@ void cadastrarRifa(){
 		"|                                                                    |\n" //10
 		"|--------------------------------------------------------------------|\n" //11
 	);
-	gotoxy(15, 4);
+	gotoxy(16, 4);
 	printf("%i", ultimoRifaVetor + 2);
 
 	gotoxy(34, 7);
@@ -459,6 +459,140 @@ void cadastrarRifa(){
 	}
 }	
 
+void comprarNumero(int rifa){
+	int rifa_lock = rifa;
+	system("cls");
+	printf(
+		"|----------------------------|\n" //0
+		"| Comprar Numero             |\n" //1
+		"|--------------------------------------------------------------------|\n" //2
+		"|                                                                    |\n" //3
+		"| Cod:     Nome:                                     Valor:          |\n" //4
+		"|____________________________________________________________________|\n" //5
+		"|                                                                    |\n" //6
+	);
+	gotoxy(7, 4);
+	printf("%i", rifa + 1);
+	gotoxy(17, 4);
+	puts(rifas[rifa].nomeRifa);
+	gotoxy(60, 4);
+	printf("%.2lf", rifas[rifa].valorNrRifa);
+
+	int QtdLinhas = trunc(rifas[rifa].qtdNrRifa / quebraNrRifa) + 1;
+	int NrVetorRifa = 0;
+	for(int row=0; row < QtdLinhas; row++){ //Imprime matriz
+		gotoxy(0, 7 + row);
+		printf("|                                                                    |\n");
+		for(int col=0; col < quebraNrRifa * 3; col++){
+			if((col % 3 == 0 || col == 0) && NrVetorRifa < rifas[rifa].qtdNrRifa){
+				gotoxy(col + margemNrRifa, row + 7);
+				if(rifas[rifa].vendaRifa[NrVetorRifa][2] == 0){ //Rifa livre
+					if(rifas[rifa].vendaRifa[NrVetorRifa][0] < 10){
+						printf("0");	
+					}
+					printf("%i", rifas[rifa].vendaRifa[NrVetorRifa][0]);
+				}
+				else if(rifas[rifa].vendaRifa[NrVetorRifa][2] == 1){ //Rifa Reservada
+					printf("RD");
+				}
+				else if(rifas[rifa].vendaRifa[NrVetorRifa][2] == 2){ //Rifa Comprada
+					printf("CD");
+				}
+				NrVetorRifa = NrVetorRifa + 1;
+			}
+		}
+	}
+
+	gotoxy(0, QtdLinhas + 7);
+	printf(
+		"|--------------------------------------------------------------------|\n"
+		"| RD = Numero reservado, CD = numero comprado, {numero} = livre      |\n"
+		"| Escolha um numero para reservar:                                   |\n"
+		"| <digite \"0\" para sair>                                             |\n"
+		"|--------------------------------------------------------------------|\n"
+	);
+
+	gotoxy(35, QtdLinhas + 9);
+	char escolhaNumeroChar[100];
+	int escolhaNumero = 0;
+	gets(escolhaNumeroChar);
+	if(strcmp(escolhaNumeroChar, "0") == 0){
+		menuLobby();
+	}
+	escolhaNumero = atoi(escolhaNumeroChar);
+	if(idUsuarioLogado == rifas[rifa].id_UsrDono){
+		printf("| Erro: o dono nao pode comprar a rifa!");
+		sleep(3);
+		comprarNumero(rifa);
+	}
+	else if(escolhaNumero <= 0 || escolhaNumero > rifas[rifa].qtdNrRifa){
+		printf("| Erro: numero invalido     ");
+		sleep(3);
+		comprarNumero(rifa);
+	}
+	else if(rifas[rifa].vendaRifa[escolhaNumero -1][2] == 1){
+		printf("| Erro: numero com status reservado");
+		sleep(3);
+		comprarNumero(rifa);
+	}
+	else if(rifas[rifa].vendaRifa[escolhaNumero -1][2] == 2){
+		printf("| Erro: numero com status comprado");
+		sleep(3);
+		comprarNumero(rifa);
+	}
+	else{
+		rifas[rifa].vendaRifa[escolhaNumero -1][1] = idUsuarioLogado;
+		rifas[rifa].vendaRifa[escolhaNumero -1][2] = 1;
+		printf("| Numero reservado com sucesso");
+		sleep(1);
+		comprarNumero(rifa);
+	}
+
+}
+
+void mostraPremios(int rifa){
+	rifa = rifa -1; //Pega o indice do vetor da Rifa
+
+	system("cls");
+	printf(
+		"|----------------------------|\n" //0
+		"| Ver Premios                |\n" //1
+		"|--------------------------------------------------------------------|\n" //2
+		"|                                                                    |\n" //3
+		"| Cod:     Nome:                                     Valor:          |\n" //4
+		"|____________________________________________________________________|\n" //5
+		"|                                                                    |\n" //6
+	);
+	gotoxy(7, 4);
+	printf("%i", rifa + 1);
+	gotoxy(17, 4);
+	puts(rifas[rifa].nomeRifa);
+	gotoxy(60, 4);
+	printf("%.2lf", rifas[rifa].valorNrRifa);
+
+	for(int i=0; i < rifas[rifa].qtdPremios; i++){
+		gotoxy(0, 7 + i);
+		printf(
+			"| Premio:     Nome:                                  Valor:          |\n" //7
+		);
+		gotoxy(10, 7 + i);
+		printf("%i", i + 1);
+		gotoxy(20, 7 + i);
+		puts(rifas[rifa].nomePremio[i]);
+		gotoxy(60, 7 + i);
+		printf("%.2lf", rifas[rifa].valorPremio[i]);
+	}
+	gotoxy(0, 7 + rifas[rifa].qtdPremios);
+	printf(
+		"|                                                                    |\n"
+		"|--------------------------------------------------------------------|\n"
+		"| Precione qualquer tecla para seguir                                |\n"
+		"|--------------------------------------------------------------------|\n"
+	);
+	getch();
+	comprarNumero(rifa);
+}
+
 void comprarRifa(){
 	system("cls");
 	printf(
@@ -491,35 +625,26 @@ void comprarRifa(){
 
 		gotoxy(20, 7);
 		fflush(stdin);
-		gets(escolha);
+		gets(tRifaEscolhida);
+		rifaEcolhida = atoi(tRifaEscolhida);
+		
+		if(rifaEcolhida -1 > ultimoRifaVetor || rifaEcolhida < 1){
+			gotoxy(20, 7);
+			printf("Valor Invalido");
+			sleep(2);
+			comprarRifa();
+		}
+
+		mostraPremios(rifaEcolhida);
+
 	}
 	else{
 		printf(
 			"| Nao existe rifa cadastrada                                         |\n" //7
 			"|--------------------------------------------------------------------|\n"
 		);
+		getch();
 	}
-
-
-
-
-	// printf("\n|     ");
-	// int nRifa = atoi(tNumerosRifa);
-    // int n;
-	// int colunasRifa = 15;
-	// for(n = 1; n <= nRifa; n++){
-
-	// 	if( n % colunasRifa == 1 && n != (nRifa + 1)){
-	// 		printf("\n|     ");
-	// 	}
-	// 	if(n <= 9){
-	// 		printf("0");
-	// 	}
-	// 	printf("%i ", n);
-	// }
-
-	fflush(stdin);
-	getch();
 	menuLobby();
 }	
 

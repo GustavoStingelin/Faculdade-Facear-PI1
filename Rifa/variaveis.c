@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <math.h>
+
 
 #define maxNrRifa 90
 #define maxComprasRifa maxNrRifa
@@ -16,6 +18,8 @@ int //system
     ,ultimoUsuarioVetor = -1
     ,ultimoRifaVetor = -1
     ,execucoesMain = 0
+    ,quebraNrRifa = 15
+    ,margemNrRifa = 2
 ;
 
 int //navegacao
@@ -40,6 +44,7 @@ char //variaveis temporarias
     ,tQtdPremios[100]
     ,tNomePremio[100]
     ,tValorPremio[100]
+    ,tRifaEscolhida[100]
 ;
 
 char x[100];
