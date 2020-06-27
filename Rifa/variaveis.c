@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <math.h>
+#include <time.h>
 
 
 #define maxNrRifa 90
@@ -64,6 +65,7 @@ char x[100];
 
     typedef struct{     //Tipo de struct rifaStruct
         int idRifa;                  //ID único da rifa (indiceVetor + 1)
+        int status;                  //Status Rifa 0=> aberta, 1=> fechada
         int qtdNrRifa;               //Quantidade de numeros que a rifa possui
         int qtdPremios;              //Quantidade  de premios que a rifa possui
         double valorNrRifa;          //Valor de cada numero da rifa
@@ -71,6 +73,7 @@ char x[100];
         int id_UsrDono;              //ID do usuário que criou a rifa
         int vendaRifa[maxNrRifa][3]; //numeroDaRifa[n][0], idUsr[n][1], statusNrRifa[n][2]
         double valorPremio[maxPremiosRifa]; //Vetor com os valores dos premios
+        int nrSorteado[maxPremiosRifa]; //Vetor com os ganhadores
         char nomePremio[maxPremiosRifa][100]; //Vetor com os nomes da Rifa
     }rifaStruct;
     rifaStruct rifas[maxRifas]; //Lista do tipo rifaStruct

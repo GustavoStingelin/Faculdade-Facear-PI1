@@ -14,6 +14,9 @@ void menuLobby(){
 	else if(rLobby == 51){ // 3 sortear rifa
 		sortearRifa();
 	}
+	else if(rLobby == 52){ // 4 Confirmar pagamento
+		confirmarPagamento();
+	}
 	else if(rLobby == 48){ // 0 sair
 		main();
 	}

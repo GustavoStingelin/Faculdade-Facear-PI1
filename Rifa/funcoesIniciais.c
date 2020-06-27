@@ -6,5 +6,6 @@ void executaFuncoesIniciais(){
         zeraListaRifa();
         SetConsoleTitle("MRF - Master Rifa");
         system("color 71");
+        srand(time(NULL));
     }
 }

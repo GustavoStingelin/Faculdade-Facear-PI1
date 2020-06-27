@@ -17,6 +17,7 @@ void zeraListaUsuarios(){
 //rifaStruct 
 void zeraStrucRifa(rifaStruct *rifa){
     (*rifa).id_UsrDono = 0;
+    (*rifa).status = 0;
     (*rifa).idRifa = 0;
     (*rifa).qtdNrRifa = 0;
     (*rifa).valorNrRifa = 0;
@@ -30,6 +31,7 @@ void zeraStrucRifa(rifaStruct *rifa){
     for(int i=0; i < maxPremiosRifa; i++){
         strcpy((*rifa).nomePremio[i], "\0");
         (*rifa).valorPremio[i] = 0;
+        (*rifa).nrSorteado[i] = 0;
     }
 }
 void zeraListaRifa(){
